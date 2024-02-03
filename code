@@ -9,12 +9,12 @@ hypothesis_for_population_coffee_flavor = 7.5
 coffee = pd.read_feather('coffee_ratings.feather')
 
 #subset the data so columns like lot number and growing region are excluded
-cofee_subset = coffee[['total_cup_points','aroma','flavor','aftertaste','acidity','body','balance','uniformity','clean_cup','sweetness','cupper_points','moisture']]
+coffee_subset = coffee[['total_cup_points','aroma','flavor','aftertaste','acidity','body','balance','uniformity','clean_cup','sweetness','cupper_points','moisture']]
 
 
 #find the point estimate (the sample statistic)
-cofee_subset['flavor'].mean()
-#the mean of the coffee_subset flavor column (cofee_subset['flavor']) is 7.52
+coffee_subset['flavor'].mean()
+#the mean of the coffee_subset flavor column (coffee_subset['flavor']) is 7.52
 #7.52 is different from our hypothesis of 7.5, but is it meaningfully different?
 
 #generate bootstrap distributions that resample the population so we can get a bootstrap distribution of the sample statistic
@@ -29,7 +29,7 @@ for i in range(5000):
         #get the mean of the column of interest (sample statistic) of the resampled data
         np.mean( \
             #resample the dataset creating a new dataset with the same number of values
-            cofee_subset.sample(frac=1, replace=True) ['flavor'] \
+            coffee_subset.sample(frac=1, replace=True) ['flavor'] \
         ) #end np.mean()
     ) #end .append()
 
@@ -48,3 +48,4 @@ z_score_coffee_flavor_hypothesis = ( mean_sample - mean_hypothesis ) / standard_
 
 z_score_coffee_flavor_hypothesis
 # ~ 2.8 z score for 7.5 hypothesis
+

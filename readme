@@ -1,0 +1,15 @@
+finding the zscore from a hypothesis on coffee flavor, we will calculate the standard error from a bootstrap distribution
+data source: https://app.datacamp.com/learn/courses/sampling-in-python
+hypothesis: the flavor rating for coffee in the population is 7.5
+find the zscore of the mean of our sample vs the hypothesis
+
+the mean of the coffee_subset flavor column (cofee_subset['flavor']) is 7.52
+7.52 is different from our hypothesis of 7.5, but is it meaningfully different?
+
+calculating the z-score
+mean_sample=coffee_subset['flavor'].mean()
+mean_hypothesis = hypothesis_for_population_coffee_flavor given at beginning
+estimate of standard error in bootstrap distributions is the standard deviation of the bootstrap distribution
+
+findings:
+~ 2.8 z score for 7.5 hypothesis
